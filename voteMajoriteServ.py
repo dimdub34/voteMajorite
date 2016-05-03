@@ -100,7 +100,7 @@ class Serveur(object):
         self._le2mserv.gestionnaire_graphique.infoserv(u"Groups - profiles")
         cpteur = 0
         for g, m in self._le2mserv.gestionnaire_groupes.get_groupes(
-                "voteMajorite").iteritems():
+                "voteMajorite").viewitems():
             self._le2mserv.gestionnaire_graphique.infoserv(
                 u"G{}: {} -> {}".format(g.split("_")[2], self._profils[cpteur],
                                         pms.PROFILES[self._profils[cpteur]]))
@@ -109,8 +109,8 @@ class Serveur(object):
             cpteur += 1
     
         # Start part ===========================================================
-        for period in xrange(1 if pms.NOMBRE_PERIODES else 0,
-                        pms.NOMBRE_PERIODES + 1):
+        for period in range(1 if pms.NOMBRE_PERIODES else 0,
+                            pms.NOMBRE_PERIODES + 1):
 
             if self._le2mserv.gestionnaire_experience.stop_repetitions:
                 break
